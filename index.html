@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>王臣 Chen Wang - 绍兴大学智能工程学院</title>
+<style>
+  :root {
+    --primary: #8B1A2B;
+    --primary-light: #A03040;
+    --primary-bg: #FBF5F5;
+    --text: #222;
+    --text-secondary: #555;
+    --border: #ddd;
+    --bg: #fff;
+    --news-bg: #f9f9f9;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: "Noto Serif SC", "Source Han Serif SC", "SimSun", Georgia, serif;
+    color: var(--text);
+    background: var(--bg);
+    line-height: 1.7;
+    font-size: 15px;
+  }
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 30px 20px 60px;
+  }
+  /* ===== Header ===== */
+  .header {
+    display: flex;
+    align-items: center;
+    gap: 35px;
+    padding-bottom: 25px;
+    border-bottom: 2px solid var(--primary);
+    margin-bottom: 30px;
+  }
+  .logo {
+    width: 200px;
+    height: 200px;
+    flex-shrink: 0;
+    object-fit: contain;
+  }
+  .header-info h1 {
+    font-size: 28px;
+    color: var(--primary);
+    margin-bottom: 6px;
+    letter-spacing: 1px;
+  }
+  .header-info .subtitle {
+    font-size: 15px;
+    color: var(--text-secondary);
+    margin-bottom: 12px;
+  }
+  .header-info p {
+    font-size: 14.5px;
+    color: var(--text);
+    text-align: justify;
+    margin-bottom: 8px;
+  }
+  .header-info p strong {
+    color: var(--primary);
+  }
+  /* ===== Contact & Links ===== */
+  .contact-block {
+    background: var(--primary-bg);
+    border-left: 4px solid var(--primary);
+    padding: 14px 20px;
+    margin-bottom: 35px;
+    font-size: 14px;
+  }
+  .contact-block p { margin: 3px 0; }
+  .contact-block a { color: var(--primary); text-decoration: none; }
+  .contact-block a:hover { text-decoration: underline; }
+  .links-row {
+    margin-top: 8px;
+    font-size: 13.5px;
+  }
+  .links-row a {
+    color: var(--primary);
+    text-decoration: none;
+    margin-right: 14px;
+  }
+  .links-row a:hover { text-decoration: underline; }
+  /* ===== Section ===== */
+  section { margin-bottom: 35px; }
+  section h2 {
+    font-size: 20px;
+    color: var(--primary);
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 6px;
+    margin-bottom: 16px;
+    letter-spacing: 0.5px;
+  }
+  /* ===== Research Team ===== */
+  .team-list {
+    font-size: 14.5px;
+    line-height: 2;
+  }
+  .team-list .role {
+    display: inline-block;
+    width: 110px;
+    color: var(--text-secondary);
+    font-weight: bold;
+  }
+  .recruit-box {
+    margin-top: 16px;
+    padding: 14px 18px;
+    background: #FFF8E7;
+    border: 1px solid #E8D5A3;
+    border-radius: 4px;
+    font-size: 13.5px;
+    line-height: 1.8;
+  }
+  .recruit-box .new-tag {
+    display: inline-block;
+    background: var(--primary);
+    color: #fff;
+    font-size: 11px;
+    padding: 1px 6px;
+    border-radius: 3px;
+    margin-right: 6px;
+    vertical-align: middle;
+  }
+  /* ===== News ===== */
+  .news-list {
+    list-style: none;
+    font-size: 14px;
+  }
+  .news-list li {
+    padding: 7px 0;
+    border-bottom: 1px dashed #eee;
+    display: flex;
+    gap: 12px;
+  }
+  .news-list li:last-child { border-bottom: none; }
+  .news-date {
+    color: var(--text-secondary);
+    white-space: nowrap;
+    font-size: 13px;
+    min-width: 85px;
+  }
+  .news-content { flex: 1; }
+  .news-content strong { color: var(--primary); }
+  .new-badge {
+    display: inline-block;
+    background: #e74c3c;
+    color: #fff;
+    font-size: 10px;
+    padding: 1px 5px;
+    border-radius: 3px;
+    margin-right: 5px;
+    vertical-align: middle;
+    font-weight: bold;
+  }
+  /* ===== Service ===== */
+  .service-group { margin-bottom: 14px; }
+  .service-group h3 {
+    font-size: 15px;
+    color: var(--text);
+    margin-bottom: 6px;
+  }
+  .service-group ul {
+    list-style: none;
+    font-size: 13.5px;
+    color: var(--text-secondary);
+  }
+  .service-group ul li {
+    padding: 2px 0;
+    padding-left: 16px;
+    position: relative;
+  }
+  .service-group ul li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: var(--primary);
+  }
+  /* ===== Publications ===== */
+  .pub-year {
+    font-size: 17px;
+    color: var(--primary);
+    font-weight: bold;
+    margin: 18px 0 10px;
+  }
+  .pub-year:first-child { margin-top: 0; }
+  .pub-item {
+    margin-bottom: 14px;
+    padding-left: 18px;
+    position: relative;
+    font-size: 14px;
+  }
+  .pub-item::before {
+    content: "▸";
+    position: absolute;
+    left: 0;
+    color: var(--primary);
+    font-size: 12px;
+    top: 3px;
+  }
+  .pub-title {
+    font-weight: bold;
+    color: var(--text);
+  }
+  .pub-title a {
+    color: var(--primary);
+    text-decoration: none;
+  }
+  .pub-title a:hover { text-decoration: underline; }
+  .pub-authors {
+    color: var(--text-secondary);
+    font-size: 13.5px;
+  }
+  .pub-venue {
+    font-style: italic;
+    color: var(--text-secondary);
+    font-size: 13.5px;
+  }
+  .pub-links {
+    margin-top: 3px;
+    font-size: 12.5px;
+  }
+  .pub-links a {
+    color: var(--primary-light);
+    text-decoration: none;
+    margin-right: 10px;
+  }
+  .pub-links a:hover { text-decoration: underline; }
+  /* ===== Students ===== */
+  .students-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 12px;
+  }
+  .student-card {
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 12px 16px;
+    font-size: 13.5px;
+  }
+  .student-card .name {
+    font-weight: bold;
+    color: var(--primary);
+    font-size: 15px;
+  }
+  .student-card .meta {
+    color: var(--text-secondary);
+    font-size: 12.5px;
+    margin: 2px 0;
+  }
+  .student-card .email {
+    font-size: 12px;
+    color: #888;
+  }
+  .student-card .destination {
+    margin-top: 4px;
+    font-size: 12.5px;
+    color: #2d7a2d;
+  }
+  /* ===== Footer ===== */
+  footer {
+    text-align: center;
+    padding-top: 25px;
+    border-top: 1px solid var(--border);
+    font-size: 12px;
+    color: #999;
+  }
+  /* ===== Responsive ===== */
+  @media (max-width: 640px) {
+    .header { flex-direction: column; align-items: center; text-align: center; gap: 15px; }
+    .header-info p { text-align: left; }
+    .logo { width: 90px; height: 90px; }
+    .news-list li { flex-direction: column; gap: 2px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- ===== Header ===== -->
+  <div class="header">
+    <img class="logo" src="assets/logo.png" alt="绍兴大学校徽">
+    <div class="header-info">
+      <h1>王臣 &nbsp;Chen Wang</h1>
+      <div class="subtitle">讲师 / Lecturer &nbsp;|&nbsp; 绍兴大学 智能工程学院</div>
+      <p>
+        王臣，1990年8月出生，男，山东聊城人，工学博士，讲师。
+        2013年6月毕业于重庆邮电大学，获学士学位；2016年6月毕业于重庆邮电大学控制科学与工程专业，获工学硕士学位；
+        2023年6月毕业于重庆大学软件工程专业，获工学博士学位。2023年11月起在绍兴大学（原绍兴文理学院）智能工程学院计算机系工作。
+      </p>
+      <p>
+        主要从事<strong>计算机视觉</strong>和<strong>深度学习</strong>相关的教学和科研工作，研究领域涉及
+        <strong>知识蒸馏</strong>、<strong>语义分割</strong>、<strong>目标检测</strong>、<strong>医学图像分析</strong>等方向。
+        当前研究兴趣聚焦于面向高效 2D/3D 场景预测的知识蒸馏方法，以及轻量化医学图像分割模型。
+      </p>
+    </div>
+  </div>
+
+  <!-- ===== Contact & Links ===== -->
+  <div class="contact-block">
+    <p><strong>邮箱：</strong><a href="mailto:wangchen3024@163.com">wangchen3024@163.com</a> &nbsp;/&nbsp; <a href="mailto:chenwang@usx.edu.cn">chenwang@usx.edu.cn</a></p>
+    <p><strong>单位：</strong>绍兴大学 智能工程学院 计算机系</p>
+    <p><strong>地址：</strong>浙江省绍兴市越城区环城西路508号</p>
+    <div class="links-row">
+      <strong>相关链接：</strong>
+      <a href="https://scholar.google.com/" target="_blank">Google Scholar</a>
+      <a href="https://dblp.org/" target="_blank">DBLP</a>
+      <a href="https://github.com/" target="_blank">GitHub</a>
+      <a href="https://orcid.org/" target="_blank">ORCID</a>
+      <a href="https://jdxy.usx.edu.cn/info/1165/7807.htm" target="_blank">学院主页</a>
+    </div>
+  </div>
+
+  <!-- ===== Research Team ===== -->
+  <section>
+    <h2>研究团队 / Research Team</h2>
+    <div class="team-list">
+      <p><span class="role">教授：</span>（待补充）</p>
+      <p><span class="role">副教授：</span>（待补充）</p>
+      <p><span class="role">讲师：</span>王臣</p>
+    </div>
+    <div class="recruit-box">
+      <span class="new-tag">招生</span>
+      热忱欢迎对<strong>图像处理、计算机视觉、自然语言处理和机器学习</strong>等领域感兴趣的同学与我联系。
+      要求：具备扎实的数学基础（线性代数、概率论、微积分），熟练使用 Python 及 PyTorch/TensorFlow 等深度学习框架，
+      有良好的英文阅读和写作能力。研究生招生方向为计算机科学与技术（学硕）、电子信息（专硕）。
+    </div>
+  </section>
+
+  <!-- ===== Recent News ===== -->
+  <section>
+    <h2>近期动态 / Recent News</h2>
+    <ul class="news-list">
+      <li>
+        <span class="news-date">2026-08</span>
+        <span class="news-content"><span class="new-badge">NEW</span>指导学生在<strong>中国机器人及人工智能大赛</strong>中获全国一等奖4项、三等奖1项。</span>
+      </li>
+      <li>
+        <span class="news-date">2026-04</span>
+        <span class="news-content">在绍兴大学算力应用知识讲座中作题为"算力——人工智能时代的引擎"的报告。</span>
+      </li>
+      <li>
+        <span class="news-date">2026-04</span>
+        <span class="news-content">指导学生参加第十一届"中国高校计算机大赛-团体程序设计天梯赛"并获奖。</span>
+      </li>
+      <li>
+        <span class="news-date">2026-04</span>
+        <span class="news-content">论文 <strong>PBE-UNet</strong>（超声图像分割）提交至 arXiv。</span>
+      </li>
+      <li>
+        <span class="news-date">2025-12</span>
+        <span class="news-content">论文 <strong>MSA-Net</strong>（乳腺超声肿瘤分割）被 <strong>IEEE BIBM 2025</strong> 接收。</span>
+      </li>
+      <li>
+        <span class="news-date">2023-11</span>
+        <span class="news-content">加入绍兴文理学院（现绍兴大学）机械与电气工程学院计算机系工作。</span>
+      </li>
+      <li>
+        <span class="news-date">2023-06</span>
+        <span class="news-content">于重庆大学软件工程专业获工学博士学位。</span>
+      </li>
+    </ul>
+  </section>
+
+  <!-- ===== Service and Activities ===== -->
+  <section>
+    <h2>学术服务 / Service and Activities</h2>
+    <div class="service-group">
+      <h3>会员资格 / Memberships</h3>
+      <ul>
+        <li>中国计算机学会（CCF）会员</li>
+      </ul>
+    </div>
+    <div class="service-group">
+      <h3>期刊审稿人 / Journal Reviewer</h3>
+      <ul>
+        <li>计算机学报</li>
+        <li>电子学报</li>
+        <li>Knowledge-Based Systems (KBS)</li>
+        <li>Expert Systems with Applications (ESWA)</li>
+        <li>Neural Computing and Applications (NCAA)</li>
+        <li>Applied Intelligence (APIN)</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- ===== Selected Publications ===== -->
+  <section>
+    <h2>代表性论文 / Selected Publications</h2>
+
+    <div class="pub-year">2026</div>
+    <div class="pub-item">
+      <div class="pub-title"><a href="https://arxiv.org/abs/2604.13791" target="_blank">PBE-UNet: A Light Weight Progressive Boundary-Enhanced U-Net with Scale-Aware Aggregation for Ultrasound Image Segmentation</a></div>
+      <div class="pub-authors">Chen Wang, Yixin Zhu, Yongbin Zhu, Fengyuan Shi, Qi Li, Jun Wang, Zuozhu Liu, Keli Hu</div>
+      <div class="pub-venue">arXiv:2604.13791, 2026</div>
+      <div class="pub-links"><a href="https://arxiv.org/pdf/2604.13791" target="_blank">[PDF]</a> <a href="#" target="_blank">[Code]</a></div>
+    </div>
+
+    <div class="pub-year">2025</div>
+    <div class="pub-item">
+      <div class="pub-title"><a href="https://www.computer.org/csdl/proceedings-article/bibm/2025/11356822/2e1iDJbHm4U" target="_blank">MSA-Net: Masked Separable Attention Network for Breast Ultrasound Tumor Segmentation</a></div>
+      <div class="pub-authors">Chen Wang, Yongbin Zhu, Shengdong Zhang</div>
+      <div class="pub-venue">IEEE International Conference on Bioinformatics and Biomedicine (BIBM), 2025</div>
+      <div class="pub-links"><a href="#" target="_blank">[PDF]</a> <a href="#" target="_blank">[Code]</a></div>
+    </div>
+
+    <div class="pub-year">2023</div>
+    <div class="pub-item">
+      <div class="pub-title">MTED: Multiple Teachers Ensemble Distillation for Compact Semantic Segmentation</div>
+      <div class="pub-authors">Chen Wang, Jiang Zhong, Qizhu Dai, Qien Yu, Yafei Qi, Bin Fang, Xue Li</div>
+      <div class="pub-venue">Neural Computing and Applications (NCAA), 2023</div>
+      <div class="pub-links"><a href="#" target="_blank">[PDF]</a></div>
+    </div>
+    <div class="pub-item">
+      <div class="pub-title">Channel Correlation Distillation for Compact Semantic Segmentation</div>
+      <div class="pub-authors">Chen Wang, Jiang Zhong, et al.</div>
+      <div class="pub-venue">International Journal of Pattern Recognition and Artificial Intelligence (IJPRAI), 2023</div>
+      <div class="pub-links"><a href="#" target="_blank">[PDF]</a></div>
+    </div>
+
+    <div class="pub-year">2022</div>
+    <div class="pub-item">
+      <div class="pub-title">Local Structure Consistency and Pixel-Correlation Distillation for Compact Semantic Segmentation</div>
+      <div class="pub-authors">Chen Wang, Jiang Zhong, Qizhu Dai, Rongzhen Li, Qien Yu, Bin Fang</div>
+      <div class="pub-venue">Applied Intelligence, 2022</div>
+      <div class="pub-links"><a href="#" target="_blank">[PDF]</a></div>
+    </div>
+
+    <p style="margin-top:16px; font-size:13px; color:var(--text-secondary);">
+      （更多论文包括发表于 Expert Systems with Applications、Neural Networks、IEEE Internet of Things 等期刊，
+      以及 ECAI、ICASSP、CEML-PKDD、DSSFA 等 CCF 推荐会议，共计 20 余篇。完整列表待补充。）
+    </p>
+  </section>
+
+  <!-- ===== Students ===== -->
+  <section>
+    <h2>指导学生 / Students</h2>
+    <div class="students-grid">
+      <div class="student-card">
+        <div class="name">在读硕士生</div>
+        <div class="meta">2024级 / 2025级</div>
+        <div class="email">研究方向：医学图像分割、知识蒸馏、目标检测</div>
+      </div>
+      <div class="student-card">
+        <div class="name">竞赛指导</div>
+        <div class="meta">中国机器人及人工智能大赛</div>
+        <div class="destination">2026年获全国一等奖4项、三等奖1项</div>
+      </div>
+      <div class="student-card">
+        <div class="name">竞赛指导</div>
+        <div class="meta">中国高校计算机大赛-天梯赛</div>
+        <div class="destination">2026年指导学生参赛并获奖</div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer>
+    <p>© 2026 王臣 Chen Wang &nbsp;|&nbsp; 绍兴大学 智能工程学院</p>
+    <p style="margin-top:4px;">Last updated: September 2026</p>
+  </footer>
+
+</div>
+</body>
+</html>
